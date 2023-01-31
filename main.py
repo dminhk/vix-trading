@@ -16,12 +16,9 @@ class VixBasedInvesting(QCAlgorithm):
         #--------------------------------------------------------------
 
 
-
     def OnData(self,data):
         if not self.Portfolio.Invested and self.Securities[self.vix].Price > self.VIXbuy:
             self.SetHoldings("SPY", 1)
-
-        closing_price = self.Portfolio["SPY"].Price
 
         if self.Securities[self.vix].Price < self.VIXsell:
             self.Liquidate("SPY")
